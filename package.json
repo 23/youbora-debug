@@ -1,6 +1,6 @@
 {
   "name": "youbora-html5-plugin",
-  "version": "6.0.0-rc",
+  "version": "6.0.0-beta",
   "description": "",
   "main": "src/plugin.js",
   "scripts": {

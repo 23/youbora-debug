@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="../dist/sp.min.js"></script>
+</head>
+
+<body>
+  <video id="video1" controls height="315" width="560">
+    <source 
+      src="http://fastly.nicepeopleatwork.com.global.prod.fastly.net/video/sintel-1024-surround.mp4" 
+      type='video/mp4'
+    >
+  </video>
+
+  <script>
+    // Turn on logs
+    youbora.Log.logLevel = youbora.Log.Level.DEBUG
+
+    if (typeof youbora.plugins.Html5 != "undefined") {
+      // init plugin
+      window.plugin = new youbora.plugins.Html5({
+        'config.accountCode': 'nicedev',
+        'config.username': 'dev',
+
+        'content.resource': 'holi.mp4',
+        'content.title': 'Title',
+        'content.title2': 'Title 2'
+      })
+
+      // begin monitorign player events
+      plugin.beginMonitoring('video1')
+    }
+
+  </script>
+</body>
+
+</html>

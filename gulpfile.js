@@ -10,7 +10,7 @@ var license = require('./gulp/license')
 var Logger = require('./gulp/logger')
 
 var config = {
-  file: 'plugin.js',
+  file: 'adapter.js',
   minified: 'sp.min.js',
   src: './src/',
   dest: './dist/'
@@ -22,10 +22,11 @@ var bundler = browserify({
   debug: true
 })
 
-bundler.pipeline.get('wrap').push(license())
-
 var rebundle = function () {
   Logger.start(config.file)
+  bundler.on('bundle', function () {
+    bundler.pipeline.get('wrap').push(license())
+  })
   const stream = bundler.bundle()
 
   return stream
@@ -35,16 +36,14 @@ var rebundle = function () {
     .pipe(buffer())
     .pipe(plugins.rename(config.minified))
     .pipe(plugins.sourcemaps.init({ loadMaps: true }))
-    .pipe(plugins.streamify(plugins.uglify({
-      preserveComments: 'license'
-    })))
-    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(plugins.uglify({ compress: false, preserveComments: 'license' }))
+    .pipe(plugins.sourcemaps.write('./'))
     .pipe(gulp.dest(config.dest))
 }
 
 gulp.task('clean', function () {
   del([
-    config.dest + config.output,
+    config.dest + config.file,
     config.dest + config.minified,
     config.dest + config.minified + '.map'
   ])

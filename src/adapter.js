@@ -1,7 +1,7 @@
 var youbora = require('youboralib')
 var pkg = require('../package.json')
 
-youbora.plugins.Html5 = youbora.plugins.Generic.extend({
+youbora.adapters.Html5 = youbora.Adapter.extend({
   getVersion: function () {
     return pkg.version + '-html5'
   },
@@ -30,7 +30,7 @@ youbora.plugins.Html5 = youbora.plugins.Generic.extend({
     youbora.Util.listenAllEvents(this.player)
 
     // Enable playhead monitor
-    this.createBufferMonitor()
+    this.monitorPlayhead(true, false)
 
     // Register listeners
     this.player.addEventListener('play', this.playListener.bind(this))
@@ -57,36 +57,34 @@ youbora.plugins.Html5 = youbora.plugins.Generic.extend({
   },
 
   playListener: function (e) {
-    this.emit('start')
+    this.fireStart()
   },
 
   timeupdateListener: function (e) {
     if (this.getPlayhead() > 0.1) {
-      this.emit('join')
+      this.fireJoin()
     }
   },
 
   pauseListener: function (e) {
-    this.emit('pause')
+    this.firePause()
   },
 
   playingListener: function (e) {
-    this.emit('resume')
-    this.emit('seek-end')
+    this.fireResume()
+    this.fireSeekEnd()
   },
 
   errorListener: function (e) {
-    this.emit('error', {
-      msg: 'PLAY_FAILURE'
-    })
+    this.fireError()
   },
 
   seekingListener: function (e) {
-    this.emit('seek-begin')
+    this.fireSeekBegin()
   },
 
   endedListener: function (e) {
-    this.emit('stop')
+    this.fireStop()
   }
 
 })

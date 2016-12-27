@@ -11,7 +11,7 @@
 ```
 
 ## Documentation, Installation & Usage
-Please refer to developer's portal [post](http://developer.nicepeopleatwork.com/plugins/integration/js-browser/html5/).
+Please refer to [this](http://developer.nicepeopleatwork.com/plugins/integration/js-browser/html5/) developer's portal post.
 
 ## I need help!
 If you find a bug, have a suggestion or need assistance send an E-mail to <support@nicepeopleatwork.com>

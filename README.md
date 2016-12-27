@@ -27,7 +27,7 @@ npm run build
 This will install and execute gulp build. Develop your changes and open a pull-request.
 
 ### Publishing changes
-Once a change is done (or a pull request merged) **NPAW** will run this scripts:
+Once a change is done (or a pull request merged) **NPAW** will run these scripts:
 
 Run the following script to update the version & tag this repo.
 

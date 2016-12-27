@@ -1,63 +1,69 @@
 var gulp = require('gulp')
-var plugins = require('gulp-load-plugins')()
-var browserify = require('browserify')
-var watchify = require('watchify')
-var buffer = require('vinyl-buffer')
-var source = require('vinyl-source-stream')
-var del = require('del')
+var npawify = require('gulp-npawify')
+var fs = require('fs')
+var pkg = require('./package.json')
+var lib = require('youboralib')
 
-var license = require('./gulp/license')
-var Logger = require('./gulp/logger')
+var license = '/**' +
+  '\n * @license ' + pkg.license +
+  '\n * ' + pkg.name + ' ' + pkg.version +
+  '\n * Packed with youboralib ' + lib.VERSION +
+  '\n * Copyright NicePopleAtWork <http://nicepeopleatwork.com/>' +
+  '\n * @author ' + pkg.author +
+  '\n */' +
+  '\n'
 
-var config = {
-  file: 'adapter.js',
-  minified: 'sp.min.js',
-  src: './src/',
-  dest: './dist/'
-}
-
-var bundler = browserify({
-  entries: [config.src + config.file],
+var options = {
+  entry: './src/sp.js',
+  output: 'sp.min.js',
   standalone: 'youbora',
-  debug: true
-})
-
-var rebundle = function () {
-  Logger.start(config.file)
-  bundler.on('bundle', function () {
-    bundler.pipeline.get('wrap').push(license())
-  })
-  const stream = bundler.bundle()
-
-  return stream
-    .on('error', Logger.error)
-    .on('end', Logger.end.bind(this, config.file))
-    .pipe(source(config.file))
-    .pipe(buffer())
-    .pipe(plugins.rename(config.minified))
-    .pipe(plugins.sourcemaps.init({ loadMaps: true }))
-    .pipe(plugins.uglify({ compress: false, preserveComments: 'license' }))
-    .pipe(plugins.sourcemaps.write('./'))
-    .pipe(gulp.dest(config.dest))
+  license: license
 }
 
-gulp.task('clean', function () {
-  del([
-    config.dest + config.file,
-    config.dest + config.minified,
-    config.dest + config.minified + '.map'
-  ])
+gulp.task('build', ['manifest'], npawify(options))
+gulp.task('watch', ['manifest'], npawify(npawify.assign({}, options, { watch: true })))
+gulp.task('default', ['build'])
+
+gulp.task('manifest', function () {
+  var file = fs.readFileSync('src/adapter.js')
+  var allgetters = [
+    'getPlayhead',
+    'getPlayrate',
+    'getFramesPerSecond',
+    'getDroppedFrames',
+    'getDuration',
+    'getBitrate',
+    'getThroughput',
+    'getRendition',
+    'getTitle',
+    'getTitle2',
+    'getIsLive',
+    'getResource',
+    'getPlayerVersion',
+    'getPlayerName',
+    'getPosition'
+  ]
+  var getters = []
+  for (var i = 0; i < allgetters.length; i++) {
+    var element = allgetters[i]
+    if (file.indexOf(element) !== -1) {
+      getters.push(element)
+    }
+  }
+
+  var manifest = {
+    name: pkg.name,
+    type: 'adapter',
+    tech: 'js',
+    author: pkg.author,
+    version: pkg.version,
+    libVersion: lib.VERSION,
+    built: new Date().toDateString(),
+    features: {
+      buffer: file.indexOf('fireBufferBegin') !== -1 ? 'native' : 'monitor',
+      seek: file.indexOf('fireSeekBegin') !== -1 ? 'native' : 'monitor',
+      getters: getters
+    }
+  }
+  fs.writeFile('./manifest.json', JSON.stringify(manifest, null, '  '), { mode: '664' })
 })
-
-gulp.task('watch', ['clean'], function () {
-  bundler = watchify(bundler)
-  bundler.on('update', rebundle)
-
-  return rebundle()
-})
-
-gulp.task('build', ['clean'], function () {
-  return rebundle()
-})
-
-gulp.task('default', ['watch'])

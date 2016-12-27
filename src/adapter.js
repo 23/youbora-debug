@@ -7,15 +7,15 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
   },
 
   getPlayhead: function () {
-    return this.player ? this.player.currentTime : 0
+    return this.player.currentTime
   },
 
   getDuration: function () {
-    return this.player ? this.player.duration : 0
+    return this.player.duration
   },
 
   getResource: function () {
-    return this.player ? this.player.currentSrc : 'unknown'
+    return this.player.currentSrc
   },
 
   getPlayerName: function () {
@@ -40,20 +40,6 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
     this.player.addEventListener('error', this.errorListener.bind(this))
     this.player.addEventListener('seeking', this.seekingListener.bind(this))
     this.player.addEventListener('ended', this.endedListener.bind(this))
-  },
-
-  unregisterListeners: function () {
-    // Disable playhead monitoring
-    this.monitor.stop()
-
-    // unregister listeners
-    this.player.removeEventListener('play', this.onPlay)
-    this.player.removeEventListener('timeupdate', this.onTimeupdate)
-    this.player.removeEventListener('pause', this.onPause)
-    this.player.removeEventListener('playing', this.onPlaying)
-    this.player.removeEventListener('error', this.onError)
-    this.player.removeEventListener('seeking', this.onSeeking)
-    this.player.removeEventListener('ended', this.onEnded)
   },
 
   playListener: function (e) {
@@ -85,8 +71,22 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
 
   endedListener: function (e) {
     this.fireStop()
+  },
+
+  unregisterListeners: function () {
+    // Disable playhead monitoring
+    this.monitor.stop()
+
+    // unregister listeners
+    this.player.removeEventListener('play', this.onPlay)
+    this.player.removeEventListener('timeupdate', this.onTimeupdate)
+    this.player.removeEventListener('pause', this.onPause)
+    this.player.removeEventListener('playing', this.onPlaying)
+    this.player.removeEventListener('error', this.onError)
+    this.player.removeEventListener('seeking', this.onSeeking)
+    this.player.removeEventListener('ended', this.onEnded)
   }
 
 })
 
-module.exports = youbora
+module.exports = youbora.adapters.Html5

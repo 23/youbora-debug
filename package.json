@@ -1,7 +1,6 @@
 {
   "name": "youbora-html5-adapter",
   "version": "6.0.0-rc",
-  "description": "",
   "main": "src/adapter.js",
   "scripts": {
     "build": "gulp build",
@@ -12,35 +11,16 @@
     "youboralib": "git+https://github.com/NPAW/plugin-core-js.git"
   },
   "devDependencies": {
-    "browserify": "^13.1.0",
-    "convert-source-map": "^1.3.0",
-    "del": "^2.2.2",
-    "eslint": "^3.7.1",
-    "eslint-config-standard": "^6.2.0",
-    "eslint-plugin-node": "^2.1.2",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1",
-    "gulp": "^3.9.1",
-    "gulp-load-plugins": "^1.3.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-streamify": "^1.0.2",
-    "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.7",
-    "offset-sourcemap-lines": "^1.0.0",
-    "through2": "^2.0.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "fs": "0.0.1-security",
+    "gulp-npawify": "^1.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NicePeopleAtWork/Youbora-Html5-JS.git"
+    "url": "git+https://github.com/NPAW/html5-adapter-js.git"
   },
   "author": "Jordi Aguilar",
   "license": "MIT",
   "bugs": {
     "email": "support@nicepeopleatwork.com"
-  },
-  "homepage": "https://github.com/NicePeopleAtWork/Youbora-Html5-JS#readme"
+  }
 }

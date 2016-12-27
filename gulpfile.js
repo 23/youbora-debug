@@ -39,8 +39,6 @@ gulp.task('manifest', function () {
     'getTitle2',
     'getIsLive',
     'getResource',
-    'getPlayerVersion',
-    'getPlayerName',
     'getPosition'
   ]
   var getters = []

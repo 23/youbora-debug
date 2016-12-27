@@ -1,9 +1,9 @@
 var youbora = require('youboralib')
-var pkg = require('../package.json')
+var manifest = require('../manifest.json')
 
 youbora.adapters.Html5 = youbora.Adapter.extend({
   getVersion: function () {
-    return pkg.version + '-html5'
+    return manifest.version + '-html5'
   },
 
   getPlayhead: function () {

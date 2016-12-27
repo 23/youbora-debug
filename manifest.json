@@ -12,9 +12,7 @@
     "getters": [
       "getPlayhead",
       "getDuration",
-      "getResource",
-      "getPlayerVersion",
-      "getPlayerName"
+      "getResource"
     ]
   }
 }

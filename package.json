@@ -2,6 +2,7 @@
   "name": "youbora-html5-adapter",
   "version": "6.0.0-rc",
   "main": "src/adapter.js",
+  "description": "Adapter for NPAW's youboralib",
   "scripts": {
     "build": "gulp build",
     "version": "npm run build && git add -A",
@@ -12,7 +13,7 @@
   },
   "devDependencies": {
     "fs": "0.0.1-security",
-    "gulp-npawify": "^1.0.1"
+    "gulp-npawify": "^1.0.2"
   },
   "repository": {
     "type": "git",

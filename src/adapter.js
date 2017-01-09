@@ -27,7 +27,8 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
   },
 
   registerListeners: function () {
-    youbora.Util.listenAllEvents(this.player)
+    // Console all events if logLevel=DEBUG
+    youbora.Util.logAllEvents(this.player)
 
     // Enable playhead monitor
     this.monitorPlayhead(true, false)

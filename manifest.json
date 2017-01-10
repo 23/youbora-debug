@@ -1,11 +1,10 @@
 {
-  "name": "youbora-html5-adapter",
+  "name": "html5",
   "type": "adapter",
   "tech": "js",
   "author": "Jordi Aguilar",
   "version": "6.0.0-rc",
-  "libVersion": "6.0.0-rc",
-  "built": "Tue Dec 27 2016",
+  "built": "Tue Jan 10 2017",
   "features": {
     "buffer": "monitor",
     "seek": "native",
@@ -14,5 +13,6 @@
       "getDuration",
       "getResource"
     ]
-  }
+  },
+  "libVersion": "6.0.0-rc"
 }

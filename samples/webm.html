@@ -14,8 +14,8 @@
     // Turn on logs
     youbora.Log.logLevel = youbora.Log.Level.DEBUG
 
+    // init plugin
     if (typeof youbora.adapters.Html5 != "undefined") {
-      // init plugin
       window.plugin = new youbora.Plugin({
         'accountCode': 'nicedev',
         'username': 'dev',
@@ -27,7 +27,6 @@
 
       plugin.setAdapter(new youbora.adapters.Html5('video1'))
     }
-
   </script>
 </body>
 

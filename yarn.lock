@@ -1746,9 +1746,9 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-youboralib-util@1.0.X:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/youboralib-util/-/youboralib-util-1.0.0.tgz#f2bced268b1171e98d97d38a761929cd136efea9"
+youboralib-util@1.1.X:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/youboralib-util/-/youboralib-util-1.1.0.tgz#fa6cb88c47f7404acaeaca0f2ccc912619db6b29"
   dependencies:
     copyfiles "^1.2.0"
 

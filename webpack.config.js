@@ -1,11 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
+var yutil = require('youboralib-util')
 var pkg = require('./package.json')
-
-var license = '@license ' + pkg.license +
-  '\n' + pkg.name + ' ' + pkg.version +
-  '\nCopyright NicePopleAtWork <http://nicepeopleatwork.com/>' +
-  '\n@author ' + pkg.author
 
 module.exports = {
   entry: './src/sp.js',
@@ -18,7 +14,7 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new webpack.BannerPlugin({
-      banner: license,
+      banner: yutil.license(pkg),
       entryOnly: true
     })
   ]

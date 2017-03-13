@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "webpack": "^2.2.1",
-    "youboralib-util": "1.0.X"
+    "youboralib-util": "1.1.X"
   },
   "repository": {
     "type": "git",

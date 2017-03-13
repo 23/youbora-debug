@@ -10,12 +10,16 @@ ext/
 node_modules
 bower_components
 
-# temp and output folders
+# temp and output
 coverage/
 docs/
 tmp/
 deploy/
 dist/
+manifest.json
+
+#Configs
+jsconfig.json
 
 #logs
 *.log

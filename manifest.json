@@ -4,8 +4,9 @@
   "tech": "js",
   "author": "Jordi Aguilar",
   "version": "6.0.0-rc",
-  "repo": "git+https://bitbucket.org/npaw/html5-adapter-js.git",
-  "built": "2017-01-30",
+  "built": "2017-03-13",
+  "repo": "https://bitbucket.org/npaw/html5-adapter-js.git",
+  "libVersion": "git+https://bitbucket.org/npaw/lib-plugin-js.git",
   "features": {
     "buffer": "monitor",
     "seek": "native",
@@ -15,5 +16,5 @@
       "getResource"
     ]
   },
-  "libVersion": "6.0.0-rc"
+  "ads": []
 }

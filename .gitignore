@@ -16,7 +16,6 @@ docs/
 tmp/
 deploy/
 dist/
-manifest.json
 
 #Configs
 jsconfig.json

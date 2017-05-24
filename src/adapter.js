@@ -40,6 +40,7 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
     this.player.addEventListener('playing', this.playingListener.bind(this))
     this.player.addEventListener('error', this.errorListener.bind(this))
     this.player.addEventListener('seeking', this.seekingListener.bind(this))
+    this.player.addEventListener('seeked', this.seekedListener.bind(this))
     this.player.addEventListener('ended', this.endedListener.bind(this))
   },
 
@@ -59,7 +60,6 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
 
   playingListener: function (e) {
     this.fireResume()
-    this.fireSeekEnd()
   },
 
   errorListener: function (e) {
@@ -68,6 +68,10 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
 
   seekingListener: function (e) {
     this.fireSeekBegin()
+  },
+
+  seekedListener: function (e) {
+    this.fireSeekEnd()
   },
 
   endedListener: function (e) {
@@ -85,6 +89,7 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
     this.player.removeEventListener('playing', this.onPlaying)
     this.player.removeEventListener('error', this.onError)
     this.player.removeEventListener('seeking', this.onSeeking)
+    this.player.removeEventListener('seeked', this.onSeeked)
     this.player.removeEventListener('ended', this.onEnded)
   }
 

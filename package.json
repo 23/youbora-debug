@@ -2,7 +2,7 @@
   "name": "youbora-adapter-html5",
   "version": "6.0.0-rc",
   "main": "src/adapter.js",
-  "description": "Adapter for NPAW's youboralib",
+  "description": "Youbora adapter for html5",
   "scripts": {
     "build": "npm run manifest && webpack -p",
     "watch": "npm run manifest && webpack -p --progress --color --watch",

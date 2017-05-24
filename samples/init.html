@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  <video id="video1" controls height="315" width="560">
+  <video id="video1" controls height="315" width="560" autoplay>
     <source src="http://fastly.nicepeopleatwork.com.global.prod.fastly.net/video/sintel-1024-surround.mp4" type='video/mp4'>
   </video>
 
@@ -17,10 +17,9 @@
     // init plugin
     if (typeof youbora.adapters.Html5 != "undefined") {
       window.plugin = new youbora.Plugin({
-        'accountCode': 'powerdev',
+        'accountCode': 'nicedev',
         'username': 'dev',
-        'parse.hls': true,
-        'parse.cdnNode': true,
+        'httpSecure': true,
 
         'content.resource': 'src.mp4',
         'content.title': 'Title',
@@ -28,6 +27,7 @@
       })
 
       plugin.setAdapter(new youbora.adapters.Html5('video1'))
+      plugin.fireInit()
     }
   </script>
 </body>

@@ -49,5 +49,5 @@ pipelines:
             - echo "[default]" >> ~/.aws/config
             - echo "region="$AWS_DEFAULT_REGION >> ~/.aws/config
             - echo "output=json" >> ~/.aws/config
-            - aws s3 cp deploy/version/ s3://youbora-smartplugins/v6/js/ --recursive --acl=public-read
+            - aws s3 cp deploy/prod/ s3://youbora-smartplugins/v6/js/ --recursive --acl=public-read
             - fi

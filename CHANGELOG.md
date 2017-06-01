@@ -1,4 +1,6 @@
 ## [Unreleased]
+### Add
+- Add `tech` to `getVersion`.
 
 ## [6.0.0] - 2017-05-25
 ### Library

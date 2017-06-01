@@ -3,7 +3,7 @@ var manifest = require('../manifest.json')
 
 youbora.adapters.Html5 = youbora.Adapter.extend({
   getVersion: function () {
-    return manifest.version + '-html5'
+    return manifest.version + '-' + manifest.name + '-' + manifest.tech
   },
 
   getPlayhead: function () {

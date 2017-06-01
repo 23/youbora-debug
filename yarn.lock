@@ -786,8 +786,8 @@ is-builtin-module@^1.0.0:
     builtin-modules "^1.0.0"
 
 is-dotfile@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/is-dotfile/-/is-dotfile-1.0.2.tgz#2c132383f39199f8edc268ca01b9b007d205cc4d"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/is-dotfile/-/is-dotfile-1.0.3.tgz#a6a2f32ffd2dfb04f5ca25ecd0f6b83cf798a1e1"
 
 is-equal-shallow@^0.1.3:
   version "0.1.3"
@@ -1058,8 +1058,8 @@ node-libs-browser@^2.0.0:
     vm-browserify "0.0.4"
 
 node-pre-gyp@^0.6.29:
-  version "0.6.34"
-  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.6.34.tgz#94ad1c798a11d7fc67381b50d47f8cc18d9799f7"
+  version "0.6.36"
+  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.6.36.tgz#db604112cb74e0d477554e9b505b17abddfab786"
   dependencies:
     mkdirp "^0.5.1"
     nopt "^4.0.1"
@@ -1786,12 +1786,13 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-youboralib-util@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/youboralib-util/-/youboralib-util-1.2.1.tgz#8de7b920b105d3541a1b96c6f676c94b7db18d13"
+youboralib-util@1.3.x:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/youboralib-util/-/youboralib-util-1.3.0.tgz#ac6734d8bcae6cf086b393a8aae1773f3d44f156"
   dependencies:
     copyfiles "^1.2.0"
+    mkdirp "^0.5.1"
 
-youboralib@youboralib@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/youboralib/-/youboralib-6.0.0.tgz#810e864180642163350fc82375704864f3943f75"
+"youboralib@https://bitbucket.org/npaw/lib-plugin-js.git":
+  version "6.0.2"
+  resolved "https://bitbucket.org/npaw/lib-plugin-js.git#61b8818648d25fb314e95f56350ca3823dbb188d"

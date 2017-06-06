@@ -1,6 +1,6 @@
-## [6.0.1] - 2017-06-01
+## [6.0.1] - Unreleased
 ### Library
-- Packaged with `lib 6.0.1`
+- Packaged with `lib 6.0.3`
 
 ### Add
 - Add `tech` to `getVersion`.

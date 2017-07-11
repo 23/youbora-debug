@@ -1,7 +1,8 @@
-## [6.0.1] - Unreleased
+## [6.0.1] - 2017-07-11
 ### Library
 - Packaged with `lib 6.0.3`
-
+### Fix
+- Fix problem with manifest and pipelines
 ### Add
 - Add `tech` to `getVersion`.
 

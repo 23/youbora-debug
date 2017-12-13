@@ -1,3 +1,7 @@
+## [6.1.1] - 2017-12-13
+### Fix
+- Fixed issue with unregisterEvents method names
+
 ## [6.1.0] - 2017-11-28
 ### Library
 - Packaged with `lib 6.1.6`

@@ -83,14 +83,14 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
     this.monitor.stop()
 
     // unregister listeners
-    this.player.removeEventListener('play', this.onPlay)
-    this.player.removeEventListener('timeupdate', this.onTimeupdate)
-    this.player.removeEventListener('pause', this.onPause)
-    this.player.removeEventListener('playing', this.onPlaying)
-    this.player.removeEventListener('error', this.onError)
-    this.player.removeEventListener('seeking', this.onSeeking)
-    this.player.removeEventListener('seeked', this.onSeeked)
-    this.player.removeEventListener('ended', this.onEnded)
+    this.player.removeEventListener('play', this.playListener)
+    this.player.removeEventListener('timeupdate', this.timeupdateListener)
+    this.player.removeEventListener('pause', this.pauseListener)
+    this.player.removeEventListener('playing', this.playingListener)
+    this.player.removeEventListener('error', this.errorListener)
+    this.player.removeEventListener('seeking', this.seekingListener)
+    this.player.removeEventListener('seeked', this.seekedListener)
+    this.player.removeEventListener('ended', this.endedListener)
   }
 
 })

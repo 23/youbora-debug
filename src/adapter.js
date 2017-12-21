@@ -33,15 +33,21 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
     // Enable playhead monitor
     this.monitorPlayhead(true, false)
 
+    // Store references
+    this.references = []
+    this.references['play'] = this.playListener.bind(this)
+    this.references['timeupdate'] = this.timeupdateListener.bind(this)
+    this.references['pause'] = this.pauseListener.bind(this)
+    this.references['playing'] = this.playingListener.bind(this)
+    this.references['error'] = this.errorListener.bind(this)
+    this.references['seeking'] = this.seekingListener.bind(this)
+    this.references['seeked'] = this.seekedListener.bind(this)
+    this.references['ended'] = this.endedListener.bind(this)
+
     // Register listeners
-    this.player.addEventListener('play', this.playListener.bind(this))
-    this.player.addEventListener('timeupdate', this.timeupdateListener.bind(this))
-    this.player.addEventListener('pause', this.pauseListener.bind(this))
-    this.player.addEventListener('playing', this.playingListener.bind(this))
-    this.player.addEventListener('error', this.errorListener.bind(this))
-    this.player.addEventListener('seeking', this.seekingListener.bind(this))
-    this.player.addEventListener('seeked', this.seekedListener.bind(this))
-    this.player.addEventListener('ended', this.endedListener.bind(this))
+    for (var key in this.references) {
+      this.player.addEventListener(key, this.references[key])
+    }
   },
 
   playListener: function (e) {
@@ -83,14 +89,12 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
     this.monitor.stop()
 
     // unregister listeners
-    this.player.removeEventListener('play', this.playListener)
-    this.player.removeEventListener('timeupdate', this.timeupdateListener)
-    this.player.removeEventListener('pause', this.pauseListener)
-    this.player.removeEventListener('playing', this.playingListener)
-    this.player.removeEventListener('error', this.errorListener)
-    this.player.removeEventListener('seeking', this.seekingListener)
-    this.player.removeEventListener('seeked', this.seekedListener)
-    this.player.removeEventListener('ended', this.endedListener)
+    if (this.player && this.references) {
+      for (var key in this.references) {
+        this.player.removeEventListener(key, this.references[key])
+      }
+      this.references = []
+    }
   }
 
 })

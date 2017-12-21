@@ -1,3 +1,7 @@
+## [6.1.2] - 2017-12-21
+### Fix
+- Fixed issue with unregisterEvents using reference list
+
 ## [6.1.1] - 2017-12-13
 ### Fix
 - Fixed issue with unregisterEvents method names

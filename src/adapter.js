@@ -18,6 +18,10 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
     return this.player.currentSrc
   },
 
+  getIsLive: function () {
+    return false
+  },
+
   getPlayerName: function () {
     return 'html5'
   },

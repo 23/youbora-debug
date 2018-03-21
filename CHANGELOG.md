@@ -1,3 +1,13 @@
+## [6.1.4] - 2018-03-21
+### Library
+- Packaged with `lib 6.1.14`
+### Fix
+- Fixed issue with isLive
+
+## [6.1.3] - 2017-12-22
+### Library
+- Packaged with `lib 6.1.8`
+
 ## [6.1.2] - 2017-12-21
 ### Fix
 - Fixed issue with unregisterEvents using reference list

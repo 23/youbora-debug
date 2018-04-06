@@ -1,6 +1,6 @@
 {
   "name": "youbora-adapter-html5",
-  "version": "6.1.5",
+  "version": "6.2.0",
   "main": "src/adapter.js",
   "description": "Youbora adapter for html5",
   "scripts": {
@@ -12,7 +12,7 @@
     "clean": "rm -rf manifest.json dist deploy"
   },
   "dependencies": {
-    "youboralib": "6.1.15"
+    "youboralib": "6.2.0"
   },
   "devDependencies": {
     "webpack": "^2.2.1",

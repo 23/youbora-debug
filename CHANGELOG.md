@@ -1,3 +1,9 @@
+## [6.2.0] - 2018-04-06
+### Library
+- Packaged with `lib 6.2.0`
+## Add
+- Start in timeupdate, to create views when video is not stopped going to background
+
 ## [6.1.5] - 2018-03-29
 ### Library
 - Packaged with `lib 6.1.15`

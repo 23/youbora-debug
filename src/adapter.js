@@ -61,6 +61,7 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
   timeupdateListener: function (e) {
     if (this.getPlayhead() > 0.1) {
       this.fireJoin()
+      this.fireStart()
     }
   },
 

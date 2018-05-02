@@ -1,3 +1,7 @@
+## [6.2.1] - 2018-05-02
+### Library
+- Packaged with `lib 6.2.3`
+
 ## [6.2.0] - 2018-04-06
 ### Library
 - Packaged with `lib 6.2.0`

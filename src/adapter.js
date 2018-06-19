@@ -1,7 +1,7 @@
 var youbora = require('youboralib')
 var manifest = require('../manifest.json')
 
-youbora.adapters.Html5 = youbora.Adapter.extend({
+youbora.adapters.Html5 = youbora.StandardAdapter.extend({
   getVersion: function () {
     return manifest.version + '-' + manifest.name + '-' + manifest.tech
   },
@@ -30,28 +30,35 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
     return this.getPlayerName()
   },
 
-  registerListeners: function () {
-    // Console all events if logLevel=DEBUG
-    youbora.Util.logAllEvents(this.player)
-
-    // Enable playhead monitor
+  initializeAdapter: function () {
     this.monitorPlayhead(true, false)
+  },
 
-    // Store references
-    this.references = []
-    this.references['play'] = this.playListener.bind(this)
-    this.references['timeupdate'] = this.timeupdateListener.bind(this)
-    this.references['pause'] = this.pauseListener.bind(this)
-    this.references['playing'] = this.playingListener.bind(this)
-    this.references['error'] = this.errorListener.bind(this)
-    this.references['seeking'] = this.seekingListener.bind(this)
-    this.references['seeked'] = this.seekedListener.bind(this)
-    this.references['ended'] = this.endedListener.bind(this)
-
-    // Register listeners
-    for (var key in this.references) {
-      this.player.addEventListener(key, this.references[key])
-    }
+  getListenersList: function () {
+    return [{
+      //object: this.player,
+      //suscriber: 'addEventListener',
+      //unsuscriber: 'removeEventListener',
+      events: {
+        'play': this.playListener,
+        'timeupdate': this.timeupdateListener,
+        'pause': this.pauseListener,
+        'playing': this.playingListener,
+        'error': this.errorListener,
+        'seeking': this.seekingListener,
+        'seeked': this.seekedListener,
+        'ended': this.endedListener,
+        'canplay': null,
+        'buffering': null,
+        'waiting': null,
+        'abort': null,
+        'seek': null,
+        'stalled': null,
+        'dispose': null,
+        'loadeddata': null,
+        'loadstart': null
+      }
+    }]
   },
 
   playListener: function (e) {
@@ -60,8 +67,8 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
 
   timeupdateListener: function (e) {
     if (this.getPlayhead() > 0.1) {
-      this.fireJoin()
       this.fireStart()
+      this.fireJoin()
     }
   },
 
@@ -87,21 +94,7 @@ youbora.adapters.Html5 = youbora.Adapter.extend({
 
   endedListener: function (e) {
     this.fireStop()
-  },
-
-  unregisterListeners: function () {
-    // Disable playhead monitoring
-    this.monitor.stop()
-
-    // unregister listeners
-    if (this.player && this.references) {
-      for (var key in this.references) {
-        this.player.removeEventListener(key, this.references[key])
-      }
-      this.references = []
-    }
   }
-
 })
 
 module.exports = youbora.adapters.Html5

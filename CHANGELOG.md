@@ -1,3 +1,9 @@
+## [6.3.0] - 2018-06-19
+### Library
+- Packaged with `lib 6.3.0` (And using StandardAdapter)
+### Fix
+- Fixed start and join call order using timeupdate event
+
 ## [6.2.1] - 2018-05-02
 ### Library
 - Packaged with `lib 6.2.3`

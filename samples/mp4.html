@@ -3,28 +3,56 @@
 
 <head>
   <script src="../dist/sp.min.js"></script>
+  <script src="../src/creds.js"></script>
 </head>
 
 <body>
+  <div>
+    <button onclick="setQuality('hd')">set HD</button>
+    <button onclick="setQuality('sd')">set SD</button>
+    <button onclick="setQuality('fhd')">set FHD</button>
+  </div>
   <video id="video1" controls height="315" width="560">
-    <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type='video/mp4'>
+    <source src="" type='video/mp4'>
   </video>
 
   <script>
+
+    console.assert(typeof YOUBORA_ACCOUNT_CODE !== "undefined", 'YOUBORA_ACCOUNT_CODE is not defined: did you setup ../src/creds.js?');
+
+    function setQuality(q) {
+
+      qualities = {
+        'sd': "https://reference.dev.visualtube.net/7340/4923305/c5eb34eb7dd4141329aa65d15cc21cc7/video_medium/nissen-efter-5-1-nederlag-til-video.mp4",
+        'hd': "https://reference.dev.visualtube.net/7340/4923305/c5eb34eb7dd4141329aa65d15cc21cc7/video_hd/nissen-efter-5-1-nederlag-til-video.mp4",
+        'fhd': "https://reference.dev.visualtube.net/7340/4923305/c5eb34eb7dd4141329aa65d15cc21cc7/video_1080p/nissen-efter-5-1-nederlag-til-video.mp4"
+      };
+
+
+      console.log('set quality: ', q, ' -> ', qualities[q]);
+      let options = {
+        'username': 'dev',
+        // 'content.resource': 'src.mp4',
+        'content.title': 'Title',
+        'content.title2': 'Title 2',
+        'content.rendition': q
+      };
+      window.plugin.setOptions(options);
+      let vid = document.getElementById('video1');
+      vid.src = qualities[q];
+      vid.play();
+    }
+
     // Turn on logs
     youbora.Log.logLevel = youbora.Log.Level.DEBUG
 
     // init plugin
     if (typeof youbora.adapters.Html5 != "undefined") {
       window.plugin = new youbora.Plugin({
-        'accountCode': 'powerdev',
-        'username': 'dev',
-        // 'content.resource': 'src.mp4',
-        'content.title': 'Title',
-        'content.title2': 'Title 2'
-      })
-
-      plugin.setAdapter(new youbora.adapters.Html5('video1'))
+        'accountCode': YOUBORA_ACCOUNT_CODE,
+      });
+      setQuality('sd');
+      plugin.setAdapter(new youbora.adapters.Html5('video1'));
     }
   </script>
 </body>
